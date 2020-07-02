@@ -78,21 +78,24 @@ java泛型提高了编译时类型的安全检测机制，该机制允许程序�
 泛型分为三种使用方式：泛型类、泛型接口和泛型方法
 1. 泛型类
 
-    public class Generic<T> {
-        private T key;
 
-        public Generic(T key){
-            this.key = key;
-        }
-        public T getKey(){
-            return key;
-        }
-    }
+        public class Generic< T> {
+            private T key;
+
+            public Generic(T key){
+                this.key = key;
+            }
+            public T getKey(){
+                return key;
+            }
+        } 
+
 2. 泛型接口
-   
-   public interface Generator<T>{
-       public T method();
-   }
+
+        public interface Generator< T>{
+            public T method();
+        }
+
 
 实现泛型节接口，不指定类型
     
@@ -112,14 +115,15 @@ java泛型提高了编译时类型的安全检测机制，该机制允许程序�
         }
     }
 
-3. 泛型方法
+1. 泛型方法
 
-    public static <E> void printArray(E[] inputArray){
-        for (E element : inputArray){
-            System.out.printf("%s", element);
+        public static <E> void printArray(E[] inputArray){
+            for (E element : inputArray){
+                System.out.printf("%s", element);
+            }
+            System.out.println();
         }
-        System.out.println();
-    }
+
 使用：
 
     Integer[] intArray = {1,2,3};

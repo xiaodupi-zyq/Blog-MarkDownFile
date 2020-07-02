@@ -144,6 +144,7 @@ xz： 比bzip2还高的压缩比
 
 ## 打包
 压缩指令只能对一个文件进行压缩，而打包能够将多个文件打包成一个大文件。tar 不仅可以用于打包，也可以使用 gzip、bzip2、xz 将打包文件进行压缩。
+
     $ tar [-z|-j|-J] [cv] [-f 新建的 tar 文件] filename...  ==打包压缩
     $ tar [-z|-j|-J] [tv] [-f 已有的 tar 文件]              ==查看
     $ tar [-z|-j|-J] [xv] [-f 已有的 tar 文件] [-C 目录]    ==解压缩
@@ -172,8 +173,8 @@ shell scripts
 输出变量使用echo命令；
 
 变量内容如果有空格，必须使用双引号或者单引号。
-双引号内的特殊字符可以保留原本特性，例如 x="lang is $LANG"，则 x 的值为 lang is zh_TW.UTF-8；
-单引号内的特殊字符就是特殊字符本身，例如 x='lang is $LANG'，则 x 的值为 lang is $LANG。
+双引号内的特殊字符可以保留原本特性，例如 `x="lang is $LANG"`，则 x 的值为 `lang is zh_TW . UTF-8；`
+单引号内的特殊字符就是特殊字符本身，例如 `x='lang is $ LANG'`，则 x 的值为 `lang is $LANG`。
 (双引号中间的变量存在替换的情况，单引号就是纯特殊字符)
 
 **指令搜索顺序**
@@ -204,6 +205,7 @@ $ cut
 
 ## 排序指令
 sort用于指令
+
     $ sort [-fbMnrtuk] [file or stdin]
     -f ：忽略大小写
     -b ：忽略最前面的空格
