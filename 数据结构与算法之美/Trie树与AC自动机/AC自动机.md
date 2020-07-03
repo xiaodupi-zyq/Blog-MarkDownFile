@@ -125,32 +125,32 @@ Trie树和AC自动机之间就像BF算法和KMP算法之间的关系一样；
 1. 如果p执行的节点有一个等于b[i]的子节点x，我们就更新p指向x，这个时候我们需要通过失败指针，检测一系列失败指针为结尾的路径是否是模式串。这一句不好理解，结合代码看，处理完之后，我们i加1，继续上述过程；
 2. 如果p指向的节点没有等于b[i]的子节点，那么失败指针就排上用场了，我们让p=p->fail，然后继续这两个过程；
 
-    /**
-     * ac自动机匹配
-     * @param text
-     */
-    public void match(char[] text){
-        int n = text.length;
-        AcNode p = root;
-        for(int i = 0; i < n; ++i){
-            int idx = text[i] - 'a';
-            while(p.children[idx] == null && p != root){
-                p = p.fail; //孩子节点没有办法匹配，找到失败指针继续匹配
-            }
-            //继续往下匹配
-            p = p.children[idx];
-            if(p == null) p = root; //如果没有匹配的，从root开始重新匹配
-            AcNode tmp = p;
-            //打印出可以匹配的模式串
-            while(tmp != root){
-                if(tmp.isEndingChar == true){
-                    int pos = i - tmp.length + 1;
-                    System.out.println("匹配起始下标" + pos + "; 长度" + tmp.length);
+        /**
+        * ac自动机匹配
+        * @param text
+        */
+        public void match(char[] text){
+            int n = text.length;
+            AcNode p = root;
+            for(int i = 0; i < n; ++i){
+                int idx = text[i] - 'a';
+                while(p.children[idx] == null && p != root){
+                    p = p.fail; //孩子节点没有办法匹配，找到失败指针继续匹配
                 }
-                tmp = tmp.fail;
+                //继续往下匹配
+                p = p.children[idx];
+                if(p == null) p = root; //如果没有匹配的，从root开始重新匹配
+                AcNode tmp = p;
+                //打印出可以匹配的模式串
+                while(tmp != root){
+                    if(tmp.isEndingChar == true){
+                        int pos = i - tmp.length + 1;
+                        System.out.println("匹配起始下标" + pos + "; 长度" + tmp.length);
+                    }
+                    tmp = tmp.fail;
+                }
             }
         }
-    }
 
 ## 解答开篇
 上述的AC自动机就是一个敏感词过滤系统，只需稍加改造将匹配的字符串用“***”代替即可；
